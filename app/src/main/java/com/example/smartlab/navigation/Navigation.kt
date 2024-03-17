@@ -10,7 +10,7 @@ fun Navigation() {
     NavHost(navController = navController,
         startDestination = "FirstScreen")
     {
-        
+
 
     }
 }
