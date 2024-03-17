@@ -38,8 +38,8 @@ fun SwitchingThePage(navController: NavHostController) {
         LaunchedEffect(key1 = true) {
             // Customize the delay time
             delay(1500L)
-            navController.navigate("StartScreen") {
-                popUpTo("FirstScreen") //удаляет страницу и стека, чтобы не было возможности вернуться к этому экрану
+            navController.navigate("LoginAndRegistration") {
+                popUpTo("StartProgram") //удаляет страницу и стека, чтобы не было возможности вернуться к этому экрану
                 {
                     inclusive = true
                 }
@@ -65,9 +65,9 @@ fun InstallationBackgroundColumn(): Brush {
         )
     )
 }
-git commit -m "End create appearance StartProgramScreen. Create fun"
+
 @Composable
-fun StartProgramScreen() {
+fun StartProgramScreen(navController: NavHostController) {
     Column (
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -89,11 +89,10 @@ fun StartProgramScreen() {
                 modifier = Modifier
                     .size(45.dp, 40.dp)
                     .padding(start=10.dp)
-
             )
         }
 
     }
-    //SwitchingThePage(navController)
+    SwitchingThePage(navController)
 
 }
