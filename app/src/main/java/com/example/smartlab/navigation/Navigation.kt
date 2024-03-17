@@ -7,6 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.smartlab.screens.LoginAndRegistrationScreen
 import com.example.smartlab.screens.StartProgramScreen
 
+
 @Composable
 fun Navigation() {
     val navController = rememberNavController()

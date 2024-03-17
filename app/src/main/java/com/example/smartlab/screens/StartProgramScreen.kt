@@ -54,7 +54,6 @@ fun InstallationBackgroundColumn(): Brush {
             Color(android.graphics.Color.parseColor("#70bce3")),
             Color(android.graphics.Color.parseColor("#5c97e0")),
             Color(android.graphics.Color.parseColor("#517de4")),
-
             Color(android.graphics.Color.parseColor("#3f66ea")),
             Color(android.graphics.Color.parseColor("#2856f2")),
             Color(android.graphics.Color.parseColor("#2856f2")),
@@ -94,5 +93,4 @@ fun StartProgramScreen(navController: NavHostController) {
 
     }
     SwitchingThePage(navController)
-
 }
