@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.smartlab.R
+import com.example.smartlab.constructhion.CreateText
 import kotlinx.coroutines.delay
 import org.w3c.dom.Text
 
@@ -76,18 +77,14 @@ fun StartProgramScreen(navController: NavHostController) {
             .background(brush = InstallationBackgroundColumn())
     ){
         Row {
-            Text(
-                text = "Смартлаб",
-                fontSize = 30.sp,
-                color = Color.White,
-                fontWeight = FontWeight.Bold
-            )
+            CreateText("Смартлаб", 30.sp, FontWeight.Bold, Color.White)
+            
             Image(
                 bitmap = ImageBitmap.imageResource(R.drawable.shape),
                 contentDescription = "Иконка",
                 modifier = Modifier
                     .size(45.dp, 40.dp)
-                    .padding(start=10.dp)
+                    .padding(start = 10.dp)
             )
         }
 

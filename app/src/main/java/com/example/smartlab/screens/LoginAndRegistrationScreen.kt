@@ -30,15 +30,8 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-@Composable
-fun CreateText(textInput: String, fontSizeText: TextUnit, fontWeightText: FontWeight?, TextColor : Color) {
-    Text(
-        text = textInput,
-        fontSize = fontSizeText,
-        fontWeight = fontWeightText,
-        color = TextColor)
-}
-@Preview
+
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginAndRegistrationScreen(navHostController: NavHostController) {
