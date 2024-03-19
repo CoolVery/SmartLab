@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.smartlab.constructhion.CreateText
 
 
 @OptIn(ExperimentalMaterial3Api::class)
