@@ -89,6 +89,20 @@ fun LoginAndRegistrationScreen() {
                     modifier = Modifier
                         .fillMaxWidth()
                 )
+                Button(
+                    onClick = {},
+                    enabled = email.value.isNotEmpty(),
+                    shape = RoundedCornerShape(15.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        disabledContainerColor = Color(0xFFC9D4FB),
+                        containerColor = Color(0xFF1A6FEE)),
+                    modifier = Modifier
+                        .padding(top = 30.dp)
+                        .height(55.dp)
+                        .fillMaxWidth()
+                ) {
+                    Text(text = "Далее", fontSize = 20.sp, color = Color(0xFFffffff))
+                }
             }
 
 
