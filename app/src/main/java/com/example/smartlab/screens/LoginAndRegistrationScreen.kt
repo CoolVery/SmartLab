@@ -41,7 +41,7 @@ fun CreateText(textInput: String, fontSizeText: TextUnit, fontWeightText: FontWe
 @Preview
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginAndRegistrationScreen() {
+fun LoginAndRegistrationScreen(navHostController: NavHostController) {
     val email = remember { mutableStateOf("") }
     Column (
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -91,7 +91,7 @@ fun LoginAndRegistrationScreen() {
                         .fillMaxWidth()
                 )
                 Button(
-                    onClick = {},
+                    onClick = {navHostController.navigate("")},
                     enabled = email.value.isNotEmpty(),
                     shape = RoundedCornerShape(15.dp),
                     colors = ButtonDefaults.buttonColors(
@@ -132,7 +132,4 @@ fun LoginAndRegistrationScreen() {
             }
         }
     }
-
-
-
 }
