@@ -1,5 +1,6 @@
 package com.example.smartlab.screens
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -66,7 +67,7 @@ fun LoginAndRegistrationScreen() {
                 .fillMaxWidth()
         ) {
             Column{
-                CreateText("Вход по E-mail", 14.sp, FontWeight.Bold, Color.Gray)
+                CreateText("Вход по E-mail", 14.sp, FontWeight.Normal, Color.Gray)
                 TextField(
                     value = email.value,
                     onValueChange = {newText -> email.value = newText},
@@ -101,19 +102,34 @@ fun LoginAndRegistrationScreen() {
                         .height(55.dp)
                         .fillMaxWidth()
                 ) {
-                    Text(text = "Далее", fontSize = 20.sp, color = Color(0xFFffffff))
+                    CreateText("Далее", 20.sp, FontWeight.Normal ,Color(0xFFffffff))
                 }
             }
-
-
         }
         Column (
-            verticalArrangement = Arrangement.SpaceEvenly,
+            verticalArrangement = Arrangement.Bottom,
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .weight(2f)
                 .fillMaxWidth()
+                .padding(bottom = 60.dp)
         ) {
-            CreateText("✋  Добро пожаловать!", 24.sp, FontWeight.Bold, Color.Black)
+            CreateText("Или войдите с помощью", 15.sp, FontWeight.Normal, Color.Gray)
+            Button(
+                onClick = {},
+                modifier = Modifier
+                    .padding(top = 15.dp)
+                    .fillMaxWidth(1f)
+                    .height(60.dp),
+                shape = RoundedCornerShape(15.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFffffff)),
+                border = BorderStroke(
+                    1.dp, color = Color(0xFFEBEBEB)
+                )
+            ) {
+                CreateText("Войти с Яндекс", 20.sp, FontWeight.Bold, Color(0xFF000000),
+                )
+            }
         }
     }
 
