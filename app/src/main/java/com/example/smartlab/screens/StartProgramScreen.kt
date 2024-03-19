@@ -78,7 +78,7 @@ fun StartProgramScreen(navController: NavHostController) {
     ){
         Row {
             CreateText("Смартлаб", 30.sp, FontWeight.Bold, Color.White)
-            
+
             Image(
                 bitmap = ImageBitmap.imageResource(R.drawable.shape),
                 contentDescription = "Иконка",
