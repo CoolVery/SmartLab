@@ -67,7 +67,6 @@ fun InputCodeInEmail() {
                 modifier = Modifier.padding(start = 3.dp, top = 4.dp)
             )
         }
-
             Column (
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -77,7 +76,7 @@ fun InputCodeInEmail() {
                 CreateText("Введите код из E-mail", 15.sp, FontWeight.Bold, Color.Black)
                 Row (
                     modifier = Modifier
-                        .padding(start = 80.dp, end = 80.dp)
+                        .padding(start = 80.dp, end = 80.dp, top = 20.dp)
                 ){
                     TextField(
                         value = "",
