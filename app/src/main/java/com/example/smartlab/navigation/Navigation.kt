@@ -22,7 +22,7 @@ fun Navigation() {
             LoginAndRegistrationScreen(navController)
         }
         composable("InputCodeInEmail") {
-
+            InputCodeInEmail(navController)
         }
 
     }

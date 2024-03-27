@@ -18,10 +18,17 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -35,13 +42,17 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.example.smartlab.constructhion.CreateText
 import com.example.smartlab.constructhion.CreateTextField
+import com.example.smartlab.navigation.Navigation
+import com.example.smartlab.ui.theme.SmartLabTheme
+import kotlinx.coroutines.delay
+import kotlin.time.Duration.Companion.seconds
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Preview
 @Composable
-fun InputCodeInEmail() {
+fun InputCodeInEmail(navController: NavHostController?) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -52,7 +63,7 @@ fun InputCodeInEmail() {
                 .padding(top = 20.dp, start = 15.dp)
         ) {
             Button(
-                onClick = { /*TODO*/ },
+                onClick = { navController!!.navigate("LoginAndRegistration") },
                 shape = RoundedCornerShape(8.dp),
                 modifier = Modifier
                     .height(30.dp)
@@ -81,30 +92,53 @@ fun InputCodeInEmail() {
             ) {
                 CreateTextField(
                     "", "",
-                    Modifier.padding(0.dp, 0.dp, 15.dp, 0.dp)
+                    Modifier
+                        .padding(horizontal = 5.dp)
                         .weight(25f)
                         .height(50.dp), 1, KeyboardType.Number, 13.dp)
                 CreateTextField(
                     "", "",
-                    Modifier.padding(0.dp, 0.dp, 15.dp, 0.dp)
+                    Modifier
+                        .padding(horizontal = 5.dp)
                         .weight(25f)
                         .height(50.dp), 1, KeyboardType.Number, 13.dp)
                 CreateTextField(
                     "", "",
-                    Modifier.padding(0.dp, 0.dp, 15.dp, 0.dp)
+                    Modifier
+                        .padding(horizontal = 5.dp)
                         .weight(25f)
                         .height(50.dp), 1, KeyboardType.Number, 13.dp)
                 CreateTextField(
                     "", "",
-                    Modifier.padding(0.dp, 0.dp, 15.dp, 0.dp)
+                    Modifier
+                        .padding(horizontal = 5.dp)
                         .weight(25f)
                         .height(50.dp), 1, KeyboardType.Number, 13.dp)
-
-
-
             }
+            CreateText("Отправить код повторно можно\r\nбудет через ${TimerTicks()} секунд", 15.sp, FontWeight.Normal, Color(0xFF939396), 10.dp, TextAlign.Center, 20.sp)
         }
     }
+}
+@Composable
+fun TimerTicks(): Int{
+    var ticks by remember { mutableStateOf(60) }
+    LaunchedEffect(Unit) {
+        while(true) {
+            if(ticks >= 0){
+                delay(1.seconds)
+                ticks--
+            }
+            else break
+        }
+    }
+    return ticks
+}
 
-
+@Composable()
+@Preview(showBackground = true)
+private fun Preview(){
+    SmartLabTheme {
+        // A surface container using the 'background' color from the theme
+        InputCodeInEmail(null)
+    }
 }

@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.smartlab.R
 import com.example.smartlab.constructhion.CreateText
+import com.example.smartlab.ui.theme.SmartLabTheme
 import kotlinx.coroutines.delay
 import org.w3c.dom.Text
 
@@ -67,7 +68,7 @@ fun InstallationBackgroundColumn(): Brush {
 }
 
 @Composable
-fun StartProgramScreen(navController: NavHostController) {
+fun StartProgramScreen(navController: NavHostController?) {
     Column (
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -89,5 +90,13 @@ fun StartProgramScreen(navController: NavHostController) {
         }
 
     }
-    SwitchingThePage(navController)
+    SwitchingThePage(navController!!)
+}
+@Composable()
+@Preview(showBackground = true)
+private fun Preview(){
+    SmartLabTheme {
+        // A surface container using the 'background' color from the theme
+        StartProgramScreen(null)
+    }
 }

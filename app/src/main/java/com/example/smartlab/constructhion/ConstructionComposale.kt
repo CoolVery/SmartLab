@@ -1,7 +1,7 @@
 package com.example.smartlab.constructhion
 
 
-
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -56,6 +56,29 @@ fun CreateText(
 }
 
 @Composable
+fun CreateText(
+    textInput: String,
+    fontSizeText: TextUnit,
+    fontWeightText: FontWeight?,
+    TextColor: Color,
+    padTop: Dp,
+    textAlignInput: TextAlign,
+    lineHeightInput: TextUnit
+) {
+    Text(
+        text = textInput,
+        fontSize = fontSizeText,
+        fontWeight = fontWeightText,
+        color = TextColor,
+        modifier = Modifier
+            .fillMaxWidth(1f)
+            .padding(top = padTop),
+        textAlign = textAlignInput,
+        lineHeight = lineHeightInput
+    )
+}
+
+@Composable
 fun CreateTextField(
     valueTF: String, onValueChangeTF: String, modifierTF: Modifier, maxLinesTF: Int,
     keyboardTypeTF: KeyboardType, shapeTF: Dp
@@ -69,7 +92,7 @@ fun CreateTextField(
         colors = ColorsTF(),
         textStyle = TextStyleTF(),
         modifier = modifierTF
-        )
+    )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -85,7 +108,8 @@ fun ColorsTF(): TextFieldColors {
         disabledIndicatorColor = Color.Transparent
     )
 }
-fun TextStyleTF(): TextStyle{
+
+fun TextStyleTF(): TextStyle {
     return TextStyle(
         fontSize = 18.sp,
         textAlign = TextAlign.Center
