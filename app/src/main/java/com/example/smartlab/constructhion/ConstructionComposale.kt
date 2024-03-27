@@ -1,5 +1,7 @@
 package com.example.smartlab.constructhion
 
+
+
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -55,7 +57,7 @@ fun CreateText(
 
 @Composable
 fun CreateTextField(
-    valueTF: String, onValueChangeTF: Unit, modifierTF: Modifier, maxLinesTF: Int,
+    valueTF: String, onValueChangeTF: String, modifierTF: Modifier, maxLinesTF: Int,
     keyboardTypeTF: KeyboardType, shapeTF: Dp
 ) {
     TextField(
@@ -65,7 +67,8 @@ fun CreateTextField(
         keyboardOptions = KeyboardOptions(keyboardType = keyboardTypeTF),
         shape = RoundedCornerShape(shapeTF),
         colors = ColorsTF(),
-        textStyle = TextStyleTF()
+        textStyle = TextStyleTF(),
+        modifier = modifierTF
         )
 }
 

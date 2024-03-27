@@ -36,16 +36,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.smartlab.constructhion.CreateText
+import com.example.smartlab.constructhion.CreateTextField
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
 fun InputCodeInEmail() {
-    Column (
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White)
-    ){
+    ) {
         Box(
             modifier = Modifier
                 .padding(top = 20.dp, start = 15.dp)
@@ -67,113 +68,43 @@ fun InputCodeInEmail() {
                 modifier = Modifier.padding(start = 3.dp, top = 4.dp)
             )
         }
-            Column (
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
                 .fillMaxSize()
-            ){
-                CreateText("Введите код из E-mail", 15.sp, FontWeight.Bold, Color.Black)
-                Row (
-                    modifier = Modifier
-                        .padding(start = 80.dp, end = 80.dp, top = 20.dp)
-                ){
-                    TextField(
-                        value = "",
-                        onValueChange = { },
-                        modifier = Modifier
-                            .padding(0.dp, 0.dp, 15.dp, 0.dp)
-                            .weight(25f)
-                            .height(50.dp),
-                        maxLines = 1,
-                        textStyle = TextStyle(
-                            fontSize = 18.sp,
-                            textAlign = TextAlign.Center),
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                        shape = RoundedCornerShape(13.dp),
-                        colors = TextFieldDefaults.textFieldColors(
-                            containerColor = Color(0xFFF5F5F9),
-                            focusedIndicatorColor = Color.Transparent,
-                            unfocusedIndicatorColor = Color.Transparent,
-                            cursorColor = Color.Black,
-                            unfocusedPlaceholderColor = Color.Gray,
-                            disabledTextColor = Color.Transparent,
-                            disabledIndicatorColor = Color.Transparent
-                        )
-                    )
-                    TextField(
-                        value = "",
-                        onValueChange = { },
-                        modifier = Modifier
-                            .padding(0.dp, 0.dp, 15.dp, 0.dp)
-                            .weight(25f)
-                            .height(50.dp),
-                        maxLines = 1,
-                        textStyle = TextStyle(
-                            fontSize = 18.sp,
-                            textAlign = TextAlign.Center),
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                        shape = RoundedCornerShape(13.dp),
-                        colors = TextFieldDefaults.textFieldColors(
-                            containerColor = Color(0xFFF5F5F9),
-                            focusedIndicatorColor = Color.Transparent,
-                            unfocusedIndicatorColor = Color.Transparent,
-                            cursorColor = Color.Black,
-                            unfocusedPlaceholderColor = Color.Gray,
-                            disabledTextColor = Color.Transparent,
-                            disabledIndicatorColor = Color.Transparent
-                        )
-                    )
-                    TextField(
-                        value = "",
-                        onValueChange = { },
-                        modifier = Modifier
-                            .padding(0.dp, 0.dp, 15.dp, 0.dp)
-                            .weight(25f)
-                            .height(50.dp),
-                        maxLines = 1,
-                        textStyle = TextStyle(
-                            fontSize = 18.sp,
-                            textAlign = TextAlign.Center),
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                        shape = RoundedCornerShape(13.dp),
-                        colors = TextFieldDefaults.textFieldColors(
-                            containerColor = Color(0xFFF5F5F9),
-                            focusedIndicatorColor = Color.Transparent,
-                            unfocusedIndicatorColor = Color.Transparent,
-                            cursorColor = Color.Black,
-                            unfocusedPlaceholderColor = Color.Gray,
-                            disabledTextColor = Color.Transparent,
-                            disabledIndicatorColor = Color.Transparent
-                        )
-                    )
-                    TextField(
-                        value = "",
-                        onValueChange = { },
-                        modifier = Modifier
-                            .padding(0.dp, 0.dp, 15.dp, 0.dp)
-                            .weight(25f)
-                            .height(50.dp),
-                        maxLines = 1,
-                        textStyle = TextStyle(
-                            fontSize = 18.sp,
-                            textAlign = TextAlign.Center),
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                        shape = RoundedCornerShape(13.dp),
-                        colors = TextFieldDefaults.textFieldColors(
-                            containerColor = Color(0xFFF5F5F9),
-                            focusedIndicatorColor = Color.Transparent,
-                            unfocusedIndicatorColor = Color.Transparent,
-                            cursorColor = Color.Black,
-                            unfocusedPlaceholderColor = Color.Gray,
-                            disabledTextColor = Color.Transparent,
-                            disabledIndicatorColor = Color.Transparent
-                        )
+        ) {
+            CreateText("Введите код из E-mail", 15.sp, FontWeight.Bold, Color.Black)
+            Row(
+                modifier = Modifier
+                    .padding(start = 80.dp, end = 80.dp, top = 20.dp)
+            ) {
+                CreateTextField(
+                    "", "",
+                    Modifier.padding(0.dp, 0.dp, 15.dp, 0.dp)
+                        .weight(25f)
+                        .height(50.dp), 1, KeyboardType.Number, 13.dp)
+                CreateTextField(
+                    "", "",
+                    Modifier.padding(0.dp, 0.dp, 15.dp, 0.dp)
+                        .weight(25f)
+                        .height(50.dp), 1, KeyboardType.Number, 13.dp)
+                CreateTextField(
+                    "", "",
+                    Modifier.padding(0.dp, 0.dp, 15.dp, 0.dp)
+                        .weight(25f)
+                        .height(50.dp), 1, KeyboardType.Number, 13.dp)
+                CreateTextField(
+                    "", "",
+                    Modifier.padding(0.dp, 0.dp, 15.dp, 0.dp)
+                        .weight(25f)
+                        .height(50.dp), 1, KeyboardType.Number, 13.dp)
 
-                    )
-                }
+
+
             }
         }
+    }
 
 
 }
