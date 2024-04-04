@@ -31,6 +31,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.text.TextStyle
@@ -53,6 +55,8 @@ import kotlin.time.Duration.Companion.seconds
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun InputCodeInEmail(navController: NavHostController?) {
+    val focusRequester = remember { FocusRequester() }
+    var textInfo by remember { mutableStateOf("")}
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -91,25 +95,21 @@ fun InputCodeInEmail(navController: NavHostController?) {
                     .padding(start = 80.dp, end = 80.dp, top = 20.dp)
             ) {
                 CreateTextField(
-                    "", "",
                     Modifier
                         .padding(horizontal = 5.dp)
                         .weight(25f)
                         .height(50.dp), 1, KeyboardType.Number, 13.dp)
                 CreateTextField(
-                    "", "",
                     Modifier
                         .padding(horizontal = 5.dp)
                         .weight(25f)
                         .height(50.dp), 1, KeyboardType.Number, 13.dp)
                 CreateTextField(
-                    "", "",
                     Modifier
                         .padding(horizontal = 5.dp)
                         .weight(25f)
                         .height(50.dp), 1, KeyboardType.Number, 13.dp)
                 CreateTextField(
-                    "", "",
                     Modifier
                         .padding(horizontal = 5.dp)
                         .weight(25f)
@@ -119,12 +119,13 @@ fun InputCodeInEmail(navController: NavHostController?) {
         }
     }
 }
+
 @Composable
 fun TimerTicks(): Int{
     var ticks by remember { mutableStateOf(60) }
     LaunchedEffect(Unit) {
         while(true) {
-            if(ticks >= 0){
+            if(ticks > 0){
                 delay(1.seconds)
                 ticks--
             }

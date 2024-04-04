@@ -4,6 +4,7 @@ package com.example.smartlab.constructhion
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
@@ -11,8 +12,17 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldColors
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusDirection
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -80,18 +90,36 @@ fun CreateText(
 
 @Composable
 fun CreateTextField(
-    valueTF: String, onValueChangeTF: String, modifierTF: Modifier, maxLinesTF: Int,
+    modifierTF: Modifier, maxLinesTF: Int,
     keyboardTypeTF: KeyboardType, shapeTF: Dp
 ) {
+    val focusManager = LocalFocusManager.current
+    val (textInfo, setText) = remember { mutableStateOf("") }
+    var count = 1
+    LaunchedEffect(textInfo) {
+        if(textInfo.length == 1) {
+            focusManager.moveFocus(
+                focusDirection = FocusDirection.Next
+            )
+            count++
+        }
+        else if (count == 2){
+            count = 0
+            focusManager.clearFocus()
+        }
+    }
     TextField(
-        value = valueTF,
-        onValueChange = { onValueChangeTF },
+        value = textInfo,
+        onValueChange = { setText(it) },
         maxLines = maxLinesTF,
         keyboardOptions = KeyboardOptions(keyboardType = keyboardTypeTF),
         shape = RoundedCornerShape(shapeTF),
         colors = ColorsTF(),
         textStyle = TextStyleTF(),
-        modifier = modifierTF
+        modifier = modifierTF,
+        keyboardActions = KeyboardActions {
+            focusManager.moveFocus(focusDirection = FocusDirection.Next)
+        }
     )
 }
 
