@@ -55,8 +55,6 @@ import kotlin.time.Duration.Companion.seconds
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun InputCodeInEmail(navController: NavHostController?) {
-    val focusRequester = remember { FocusRequester() }
-    var textInfo by remember { mutableStateOf("")}
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -98,22 +96,22 @@ fun InputCodeInEmail(navController: NavHostController?) {
                     Modifier
                         .padding(horizontal = 5.dp)
                         .weight(25f)
-                        .height(50.dp), 1, KeyboardType.Number, 13.dp)
+                        .height(50.dp), 1, KeyboardType.Number, 13.dp, false)
                 CreateTextField(
                     Modifier
                         .padding(horizontal = 5.dp)
                         .weight(25f)
-                        .height(50.dp), 1, KeyboardType.Number, 13.dp)
+                        .height(50.dp), 1, KeyboardType.Number, 13.dp, false)
                 CreateTextField(
                     Modifier
                         .padding(horizontal = 5.dp)
                         .weight(25f)
-                        .height(50.dp), 1, KeyboardType.Number, 13.dp)
+                        .height(50.dp), 1, KeyboardType.Number, 13.dp, false)
                 CreateTextField(
                     Modifier
                         .padding(horizontal = 5.dp)
                         .weight(25f)
-                        .height(50.dp), 1, KeyboardType.Number, 13.dp)
+                        .height(50.dp), 1, KeyboardType.Number, 13.dp, true)
             }
             CreateText("Отправить код повторно можно\r\nбудет через ${TimerTicks()} секунд", 15.sp, FontWeight.Normal, Color(0xFF939396), 10.dp, TextAlign.Center, 20.sp)
         }

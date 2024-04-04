@@ -91,20 +91,17 @@ fun CreateText(
 @Composable
 fun CreateTextField(
     modifierTF: Modifier, maxLinesTF: Int,
-    keyboardTypeTF: KeyboardType, shapeTF: Dp
+    keyboardTypeTF: KeyboardType, shapeTF: Dp, exitTextField: Boolean
 ) {
     val focusManager = LocalFocusManager.current
     val (textInfo, setText) = remember { mutableStateOf("") }
-    var count = 1
     LaunchedEffect(textInfo) {
-        if(textInfo.length == 1) {
+        if(!exitTextField) {
             focusManager.moveFocus(
                 focusDirection = FocusDirection.Next
             )
-            count++
         }
-        else if (count == 2){
-            count = 0
+        else if (exitTextField){
             focusManager.clearFocus()
         }
     }
