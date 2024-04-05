@@ -97,6 +97,7 @@ fun CreateTextField(
     val (textInfo, setText) = remember { mutableStateOf("") }
     LaunchedEffect(textInfo) {
         if(!exitTextField) {
+
             focusManager.moveFocus(
                 focusDirection = FocusDirection.Next
             )
@@ -107,13 +108,19 @@ fun CreateTextField(
     }
     TextField(
         value = textInfo,
-        onValueChange = { setText(it) },
+        onValueChange = {
+            if (it.length <= 1)
+            { setText(it) }
+            else {
+                setText(it.substring(1))
+            }},
         maxLines = maxLinesTF,
         keyboardOptions = KeyboardOptions(keyboardType = keyboardTypeTF),
         shape = RoundedCornerShape(shapeTF),
         colors = ColorsTF(),
         textStyle = TextStyleTF(),
         modifier = modifierTF,
+
         keyboardActions = KeyboardActions {
             focusManager.moveFocus(focusDirection = FocusDirection.Next)
         }
