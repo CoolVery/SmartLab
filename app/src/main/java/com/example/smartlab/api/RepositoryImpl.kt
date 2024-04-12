@@ -7,8 +7,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import java.io.IOException
 
-class RepositoryImpl (
-    private val api : ApiInter
+class RepositoryImpl(
+    private val api: ApiInter
 ) : Repository {
     @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
     override suspend fun sendCodeEmail(email: String): Flow<Result<String>> {
