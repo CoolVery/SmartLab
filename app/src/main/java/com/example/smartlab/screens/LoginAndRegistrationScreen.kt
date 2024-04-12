@@ -32,11 +32,12 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.smartlab.constructhion.CreateText
 import com.example.smartlab.ui.theme.SmartLabTheme
+import com.example.smartlab.viewmodelmain.ViewModelMain
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginAndRegistrationScreen(navHostController: NavHostController?) {
+fun LoginAndRegistrationScreen(navHostController: NavHostController?, viewModel: ViewModelMain) {
     val email = remember { mutableStateOf("") }
     Column (
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -86,7 +87,10 @@ fun LoginAndRegistrationScreen(navHostController: NavHostController?) {
                         .fillMaxWidth()
                 )
                 Button(
-                    onClick = {navHostController!!.navigate("InputCodeInEmail")},
+                    onClick = {
+                        viewModel.sendCodeToEmail(email.value)
+                        navHostController!!.navigate("InputCodeInEmail")
+                              },
                     enabled = email.value.isNotEmpty(),
                     shape = RoundedCornerShape(15.dp),
                     colors = ButtonDefaults.buttonColors(
@@ -134,6 +138,6 @@ fun LoginAndRegistrationScreen(navHostController: NavHostController?) {
 private fun Preview(){
     SmartLabTheme {
         // A surface container using the 'background' color from the theme
-        LoginAndRegistrationScreen(null)
+       // LoginAndRegistrationScreen(null)
     }
 }

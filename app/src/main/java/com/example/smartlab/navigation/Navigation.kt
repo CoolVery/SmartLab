@@ -7,10 +7,11 @@ import androidx.navigation.compose.rememberNavController
 import com.example.smartlab.screens.InputCodeInEmail
 import com.example.smartlab.screens.LoginAndRegistrationScreen
 import com.example.smartlab.screens.StartProgramScreen
+import com.example.smartlab.viewmodelmain.ViewModelMain
 
 
 @Composable
-fun Navigation() {
+fun Navigation(viewModel: ViewModelMain) {
     val navController = rememberNavController()
     NavHost(navController = navController,
         startDestination = "StartProgram")
@@ -19,7 +20,7 @@ fun Navigation() {
             StartProgramScreen(navController)
         }
         composable("LoginAndRegistration") {
-            LoginAndRegistrationScreen(navController)
+            LoginAndRegistrationScreen(navController, viewModel)
         }
         composable("InputCodeInEmail") {
             InputCodeInEmail(navController)
