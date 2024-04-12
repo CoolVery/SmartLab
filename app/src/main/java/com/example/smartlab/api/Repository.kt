@@ -1,4 +1,4 @@
-package com.example.smartlab.Api
+package com.example.smartlab.api
 
 import kotlinx.coroutines.flow.Flow
 

@@ -1,4 +1,4 @@
-package com.example.smartlab.Api
+package com.example.smartlab.api
 
 import retrofit2.http.Header
 import retrofit2.http.POST
