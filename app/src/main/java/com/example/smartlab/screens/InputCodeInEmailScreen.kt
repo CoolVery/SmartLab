@@ -49,12 +49,14 @@ import com.example.smartlab.constructhion.CreateText
 import com.example.smartlab.constructhion.CreateTextField
 import com.example.smartlab.navigation.Navigation
 import com.example.smartlab.ui.theme.SmartLabTheme
+import com.example.smartlab.viewmodelmain.ViewModelMain
 import kotlinx.coroutines.delay
 import kotlin.time.Duration.Companion.seconds
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun InputCodeInEmail(navController: NavHostController?) {
+fun InputCodeInEmail(navController: NavHostController?, email: String?, viewModel : ViewModelMain) {
+    var code = remember { mutableStateOf("")}
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -96,22 +98,22 @@ fun InputCodeInEmail(navController: NavHostController?) {
                     Modifier
                         .padding(horizontal = 5.dp)
                         .weight(25f)
-                        .height(50.dp), 1, KeyboardType.Number, 13.dp, false)
+                        .height(50.dp), 1, KeyboardType.Number, 13.dp, false, code, null, null, null)
                 CreateTextField(
                     Modifier
                         .padding(horizontal = 5.dp)
                         .weight(25f)
-                        .height(50.dp), 1, KeyboardType.Number, 13.dp, false)
+                        .height(50.dp), 1, KeyboardType.Number, 13.dp, false, code, null, null, null)
                 CreateTextField(
                     Modifier
                         .padding(horizontal = 5.dp)
                         .weight(25f)
-                        .height(50.dp), 1, KeyboardType.Number, 13.dp, false)
+                        .height(50.dp), 1, KeyboardType.Number, 13.dp, false, code, null, null, null)
                 CreateTextField(
                     Modifier
                         .padding(horizontal = 5.dp)
                         .weight(25f)
-                        .height(50.dp), 1, KeyboardType.Number, 13.dp, true)
+                        .height(50.dp), 1, KeyboardType.Number, 13.dp, true, code, viewModel, email, navController)
             }
             CreateText("Отправить код повторно можно\r\nбудет через ${TimerTicks()} секунд", 15.sp, FontWeight.Normal, Color(0xFF939396), 10.dp, TextAlign.Center, 20.sp)
         }
@@ -133,6 +135,7 @@ fun TimerTicks(): Int{
     return ticks
 }
 
+/*
 @Composable()
 @Preview(showBackground = true)
 private fun Preview(){
@@ -140,4 +143,4 @@ private fun Preview(){
         // A surface container using the 'background' color from the theme
         InputCodeInEmail(null)
     }
-}
+}*/

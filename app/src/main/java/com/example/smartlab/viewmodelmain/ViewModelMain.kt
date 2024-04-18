@@ -26,4 +26,25 @@ class ViewModelMain(private val repository: Repository): ViewModel() {
             }
         }
     }
+    fun checkCodeInEmail(
+        email: String?,
+        code: String,
+        acthion: () -> Unit) {
+        viewModelScope.launch {
+            repository.checkCodeInEmail(email, code).collect {
+                when (it) {
+                    is com.example.smartlab.api.Result.Error -> {
+                        _showErrorToastChannel.send(true)
+                    }
+
+                    is com.example.smartlab.api.Result.Success -> {
+                        acthion()
+                        _showErrorToastChannel.send(false)
+
+                    }
+                }
+            }
+
+        }
+    }
 }

@@ -13,6 +13,7 @@ import androidx.compose.material3.TextFieldColors
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -31,6 +32,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import com.example.smartlab.viewmodelmain.ViewModelMain
 
 @Composable
 fun CreateText(
@@ -91,7 +94,8 @@ fun CreateText(
 @Composable
 fun CreateTextField(
     modifierTF: Modifier, maxLinesTF: Int,
-    keyboardTypeTF: KeyboardType, shapeTF: Dp, exitTextField: Boolean
+    keyboardTypeTF: KeyboardType, shapeTF: Dp, exitTextField: Boolean,
+    stringCode: MutableState<String>, viewModel: ViewModelMain? = null, email: String?, navHost: NavHostController?
 ) {
     val focusManager = LocalFocusManager.current
     val (textInfo, setText) = remember { mutableStateOf("") }
@@ -110,10 +114,14 @@ fun CreateTextField(
         value = textInfo,
         onValueChange = {
             if (it.length <= 1)
-            { setText(it) }
+            { stringCode.value += it
+                setText(it) }
             else {
                 setText(it.substring(1))
-            }},
+                stringCode.value = " " }
+                if (exitTextField) {
+                    viewModel!!.checkCodeInEmail(email, stringCode.value, {navHost!!.navigate("Catalog")})
+                }},
         maxLines = maxLinesTF,
         keyboardOptions = KeyboardOptions(keyboardType = keyboardTypeTF),
         shape = RoundedCornerShape(shapeTF),
@@ -135,10 +143,9 @@ fun ColorsTF(): TextFieldColors {
         focusedIndicatorColor = Color.Transparent,
         unfocusedIndicatorColor = Color.Transparent,
         cursorColor = Color.Black,
-        unfocusedPlaceholderColor = Color.Gray,
-        disabledTextColor = Color.Transparent,
-        disabledIndicatorColor = Color.Transparent
-    )
+        unfocusedPlaceholderColor = Color.Black,
+        focusedTextColor = Color.Black,
+        unfocusedTextColor = Color.Black)
 }
 
 fun TextStyleTF(): TextStyle {

@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.smartlab.screens.CatalogScreen
 import com.example.smartlab.screens.InputCodeInEmail
 import com.example.smartlab.screens.LoginAndRegistrationScreen
 import com.example.smartlab.screens.StartProgramScreen
@@ -22,9 +23,13 @@ fun Navigation(viewModel: ViewModelMain) {
         composable("LoginAndRegistration") {
             LoginAndRegistrationScreen(navController, viewModel)
         }
-        composable("InputCodeInEmail") {
-            InputCodeInEmail(navController)
-        }
+        composable("InputCodeInEmail/{email}") {
+            emailForCode -> val param = emailForCode.arguments?.getString("email")
 
+            InputCodeInEmail(navController, param, viewModel)
+        }
+        composable("Catalog") {
+            CatalogScreen(navController)
+        }
     }
 }

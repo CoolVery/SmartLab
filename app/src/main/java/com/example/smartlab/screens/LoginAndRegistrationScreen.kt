@@ -79,9 +79,9 @@ fun LoginAndRegistrationScreen(navHostController: NavHostController?, viewModel:
                         focusedIndicatorColor = Color.Transparent,
                         unfocusedIndicatorColor = Color.Transparent,
                         cursorColor = Color.Black,
-                        unfocusedPlaceholderColor = Color.Gray,
-                        disabledTextColor = Color.Transparent,
-                        disabledIndicatorColor = Color.Transparent,
+                        unfocusedPlaceholderColor = Color.Black,
+                        focusedTextColor = Color.Black,
+                        unfocusedTextColor = Color.Black
                     ),
                     modifier = Modifier
                         .fillMaxWidth()
@@ -89,7 +89,7 @@ fun LoginAndRegistrationScreen(navHostController: NavHostController?, viewModel:
                 Button(
                     onClick = {
                         viewModel.sendCodeToEmail(email.value)
-                        navHostController!!.navigate("InputCodeInEmail")
+                        navHostController!!.navigate("InputCodeInEmail/${email.value}")
                               },
                     enabled = email.value.isNotEmpty(),
                     shape = RoundedCornerShape(15.dp),
